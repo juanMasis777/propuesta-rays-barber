@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ray's Barber Shop · Hialeah</title>
+<meta name="description" content="Barbería en Hialeah, FL. Corte, barba y afeitado. 4.9 estrellas en Booksy. Reserva en línea." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --menta: #a9dcc5;     /* vinil de silla de barbero vintage */
+    --menta-2: #d6efe3;
+    --pino: #173a2e;      /* verde profundo */
+    --rojo: #d7322b;      /* poste de barbero */
+    --azul: #1f4fa3;      /* poste de barbero */
+    --azulejo: #f7f7f2;   /* azulejo blanco */
+    --tinta: #0f241c;
+    --sans: "Archivo", system-ui, sans-serif;
+    --mono: "Courier Prime", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font: 400 clamp(17px, .9vw + 6px, 20px)/1.55 var(--sans); color: var(--tinta); background: var(--azulejo); }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--rojo); outline-offset: 3px; }
+  .wrap { max-width: 1360px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 64px); }
+  .cond { font-variation-settings: "wdth" 66; }
+
+  /* Aviso de demo */
+  .demo { background: var(--tinta); color: #fff; font-size: 14px; text-align: center; padding: 9px 16px; }
+  .demo b { color: var(--menta); }
+
+  /* Barra */
+  .nav { position: sticky; top: 0; z-index: 20; background: var(--azulejo); border-bottom: 2px solid var(--tinta); }
+  .nav .wrap { display: flex; align-items: center; gap: 20px; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+  .logo b { font: 900 30px/1 var(--sans); font-variation-settings: "wdth" 70; letter-spacing: .01em; }
+  .logo small { display: block; font: 700 11px/1.2 var(--sans); letter-spacing: .02em; color: #47614f; }
+  .pole { width: 18px; height: 44px; border-radius: 9px; border: 2px solid var(--tinta); overflow: hidden; flex: none;
+    background: repeating-linear-gradient(-55deg, var(--rojo) 0 7px, #fff 7px 12px, var(--azul) 12px 19px, #fff 19px 24px); background-size: 100% 48px; }
+  @media (prefers-reduced-motion: no-preference) { .pole { animation: spin 1.6s linear infinite; } @keyframes spin { to { background-position: 0 48px; } } }
+  .links { display: flex; gap: 24px; font-weight: 600; font-size: 16px; }
+  .links a { text-decoration: none; }
+  .links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 880px) { .links { display: none; } }
+  .lang { display: flex; border: 2px solid var(--tinta); border-radius: 999px; padding: 2px; }
+  .lang button { font: 800 13px var(--sans); background: none; border: 0; border-radius: 999px; padding: 6px 11px; cursor: pointer; color: var(--tinta); }
+  .lang button[aria-pressed="true"] { background: var(--tinta); color: #fff; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 800 17px var(--sans); text-decoration: none; padding: 16px 26px; border-radius: 999px; border: 2px solid var(--tinta); cursor: pointer; transition: transform .12s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.red { background: var(--rojo); color: #fff; box-shadow: 4px 4px 0 var(--tinta); }
+  .btn.light { background: #fff; color: var(--tinta); }
+  .btn.small { padding: 10px 18px; font-size: 15px; box-shadow: 3px 3px 0 var(--tinta); }
+  @media (max-width: 560px) { .nav .btn.small { display: none; } }
+
+  /* Portada */
+  .hero { background: var(--menta); border-bottom: 2px solid var(--tinta); position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: auto 0 0 0; height: 90px; opacity: .14;
+    background: conic-gradient(var(--tinta) 25%, transparent 0 50%, var(--tinta) 0 75%, transparent 0) 0 0 / 46px 46px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 5vw, 90px); align-items: center; min-height: calc(100svh - 110px); padding-top: 48px; padding-bottom: 110px; position: relative; }
+  @media (max-width: 960px) { .hero .wrap { grid-template-columns: 1fr; min-height: 0; } }
+  @media (max-width: 600px) { .hero h1 em { -webkit-text-stroke-width: 1.4px; font-size: .7em; } }
+  .rating { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--tinta); border-radius: 999px; padding: 7px 16px 7px 12px; font-weight: 700; font-size: 15px; text-decoration: none; margin-bottom: 26px; }
+  .rating .stars { color: var(--rojo); letter-spacing: 1px; }
+  .hero h1 { font: 900 clamp(60px, 9vw, 168px)/.84 var(--sans); font-variation-settings: "wdth" 64; margin: 0 0 26px; letter-spacing: -.01em; text-transform: uppercase; }
+  .hero h1 span { display: block; color: var(--rojo); -webkit-text-stroke: 0; }
+  .hero h1 em { display: block; font-style: normal; color: transparent; -webkit-text-stroke: 2.5px var(--tinta); font-size: .62em; margin-top: .08em; white-space: nowrap; }
+  .hero p { font-size: clamp(19px, 1.4vw, 24px); max-width: 30em; margin: 0 0 32px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+  /* Tablero de precios (letreros de letras blancas) */
+  .board { background: #232323; border: 14px solid #6b4a2f; border-radius: 10px; padding: 28px clamp(20px, 2.4vw, 36px); color: #f4f4ef; font-family: var(--mono);
+    box-shadow: 10px 10px 0 var(--tinta); position: relative;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px); }
+  .board::before { content: ""; position: absolute; top: -40px; left: 50%; width: 2px; height: 26px; background: var(--tinta); }
+  .board h2 { font: 700 clamp(20px, 1.6vw, 26px) var(--mono); text-align: center; margin: 0 0 6px; letter-spacing: .12em; }
+  .board .sub { text-align: center; color: #c9c9c0; font-size: 14px; margin-bottom: 22px; }
+  .board ul { list-style: none; margin: 0; padding: 0; }
+  .board li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,.25); font-size: clamp(16px, 1.25vw, 20px); letter-spacing: .04em; }
+  .board li:last-child { border: 0; }
+  .board .price { font-weight: 700; text-align: right; }
+  .board s { color: #9a9a92; font-size: .8em; margin-right: 8px; }
+  .board .min { grid-column: 1 / -1; color: #b6b6ad; font-size: 13px; }
+  .board .free { color: var(--menta); }
+
+  /* Franja de poste */
+  .stripe { background: repeating-linear-gradient(-45deg, var(--rojo) 0 26px, #fff 26px 40px, var(--azul) 40px 66px, #fff 66px 80px); border-bottom: 2px solid var(--tinta); padding: 14px 0; overflow: hidden; }
+  .stripe .track { display: flex; gap: 44px; width: max-content; }
+  .stripe span { background: var(--tinta); color: #fff; font: 800 clamp(16px, 1.3vw, 20px) var(--sans); padding: 8px 18px; border-radius: 999px; white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) { .stripe .track { animation: run 40s linear infinite; } @keyframes run { to { transform: translateX(-50%); } } }
+
+  /* Secciones */
+  section.block { padding: clamp(80px, 9vw, 140px) 0; }
+  .block h2 { font: 900 clamp(44px, 6vw, 96px)/.9 var(--sans); font-variation-settings: "wdth" 66; text-transform: uppercase; margin: 0 0 18px; }
+  .lead { font-size: clamp(19px, 1.3vw, 23px); max-width: 36em; margin: 0 0 54px; color: #2f4a3e; }
+
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .services { grid-template-columns: 1fr; } }
+  .svc { background: #fff; border: 2px solid var(--tinta); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; box-shadow: 6px 6px 0 var(--tinta); }
+  .svc .ico { width: 64px; height: 64px; border-radius: 50%; background: var(--menta); border: 2px solid var(--tinta); display: grid; place-items: center; margin-bottom: 22px; }
+  .svc .ico svg { width: 32px; height: 32px; }
+  .svc h3 { font: 900 clamp(30px, 2.4vw, 40px)/1 var(--sans); font-variation-settings: "wdth" 70; text-transform: uppercase; margin: 0 0 10px; }
+  .svc p { margin: 0 0 24px; color: #3a5447; flex: 1; }
+  .svc .row { display: flex; align-items: baseline; justify-content: space-between; border-top: 2px dashed #b9cbbf; padding-top: 18px; }
+  .svc .amt { font: 900 48px/1 var(--sans); font-variation-settings: "wdth" 70; }
+  .svc .amt s { font-size: 22px; color: #8aa093; font-weight: 700; margin-left: 6px; }
+  .svc .time { font-weight: 700; color: #3a5447; }
+  .note { margin-top: 30px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-weight: 600; }
+  .note .tag { background: var(--menta-2); border: 2px solid var(--tinta); border-radius: 999px; padding: 6px 14px; }
+
+  /* A domicilio */
+  .mobile { background: var(--pino); color: #e9f5ef; border-top: 2px solid var(--tinta); border-bottom: 2px solid var(--tinta); }
+  .mobile .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+  @media (max-width: 900px) { .mobile .wrap { grid-template-columns: 1fr; } }
+  .mobile h2 { color: #fff; }
+  .mobile .lead { color: #cfe6da; margin-bottom: 30px; }
+  .mobile ul { list-style: none; padding: 0; margin: 0 0 34px; display: grid; gap: 14px; }
+  .mobile li { display: flex; gap: 12px; align-items: flex-start; font-size: clamp(18px, 1.2vw, 21px); }
+  .mobile li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 3px; border-radius: 50%; background: var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23173a2e' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center / 14px no-repeat; }
+  .van { width: 100%; max-width: 560px; justify-self: center; }
+
+  /* Reputación */
+  .rep .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+  @media (max-width: 900px) { .rep .wrap { grid-template-columns: 1fr; } }
+  .score { font: 900 clamp(140px, 16vw, 260px)/.8 var(--sans); font-variation-settings: "wdth" 62; color: var(--rojo); margin: 0; }
+  .score + .stars { font-size: clamp(30px, 2.6vw, 42px); color: var(--rojo); letter-spacing: 4px; margin: 14px 0 6px; }
+  .bars { display: grid; gap: 12px; margin: 0 0 32px; }
+  .bar { display: grid; grid-template-columns: 70px 1fr 54px; gap: 14px; align-items: center; font-weight: 700; }
+  .bar .t { height: 16px; border: 2px solid var(--tinta); border-radius: 99px; background: #fff; overflow: hidden; }
+  .bar .t i { display: block; height: 100%; background: var(--rojo); }
+  .bar span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* Visítanos */
+  .visit { background: var(--menta-2); border-top: 2px solid var(--tinta); }
+  .visit .grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; align-items: stretch; }
+  @media (max-width: 900px) { .visit .grid { grid-template-columns: 1fr; } }
+  .info { background: #fff; border: 2px solid var(--tinta); border-radius: 22px; padding: clamp(26px, 3vw, 44px); box-shadow: 6px 6px 0 var(--tinta); }
+  .info dl { margin: 0 0 30px; display: grid; gap: 22px; }
+  .info dt { font-weight: 800; font-size: 14px; color: #47614f; }
+  .info dd { margin: 4px 0 0; font-size: clamp(20px, 1.5vw, 26px); font-weight: 700; line-height: 1.3; }
+  .info dd a { text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .map { border: 2px solid var(--tinta); border-radius: 22px; overflow: hidden; min-height: 420px; box-shadow: 6px 6px 0 var(--tinta); background: #ddd; }
+  .map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; filter: saturate(.85); }
+
+  /* Cierre */
+  .end { background: var(--rojo); color: #fff; text-align: center; padding: clamp(90px, 10vw, 150px) 0; border-top: 2px solid var(--tinta); }
+  .end h2 { font: 900 clamp(56px, 9vw, 160px)/.85 var(--sans); font-variation-settings: "wdth" 64; text-transform: uppercase; margin: 0 0 22px; }
+  .end p { font-size: clamp(19px, 1.4vw, 24px); margin: 0 auto 36px; max-width: 30em; }
+  .end .btn.light { box-shadow: 5px 5px 0 var(--tinta); font-size: 19px; padding: 18px 32px; }
+  footer { background: var(--tinta); color: #b8cdc2; font-size: 15px; padding: 26px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  /* Botón fijo en celular */
+  .sticky { display: none; }
+  @media (max-width: 700px) {
+    .sticky { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; }
+    .sticky .btn { width: 100%; }
+    footer { padding-bottom: 96px; }
+  }
+
+  /* Fotos */
+  .ph { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--pino) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9dcc5' stroke-width='1.4'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cpath d='M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12'/%3E%3C/svg%3E") center / 56px no-repeat; }
+  .hero-media { position: relative; align-self: stretch; min-height: 560px; }
+  .hero-photo { position: absolute; inset: 0 0 60px 40px; border: 2px solid var(--tinta); border-radius: 28px; overflow: hidden; box-shadow: 10px 10px 0 var(--tinta); }
+  .hero-media .board { position: absolute; left: 0; bottom: 0; width: min(380px, 78%); padding: 20px 22px; border-width: 10px; }
+  .hero-media .board::before { display: none; }
+  .hero-media .board h2 { font-size: 18px; } .hero-media .board .sub { margin-bottom: 10px; font-size: 12px; }
+  .hero-media .board li { padding: 8px 0; font-size: 15px; } .hero-media .board .min { font-size: 11px; }
+  .chip { position: absolute; top: 24px; right: -14px; background: var(--rojo); color: #fff; border: 2px solid var(--tinta); border-radius: 999px; padding: 10px 18px; font-weight: 800; box-shadow: 4px 4px 0 var(--tinta); transform: rotate(4deg); }
+  @media (max-width: 960px) { .hero-media { min-height: 520px; } .hero-photo { inset: 0 0 90px 0; } .chip { right: 10px; } }
+  .svc { padding: 0; overflow: hidden; }
+  .svc .shot { height: 230px; border-bottom: 2px solid var(--tinta); position: relative; }
+  .svc .body { padding: 26px 30px 30px; display: flex; flex-direction: column; flex: 1; }
+  .svc .ico { position: absolute; left: 24px; bottom: -32px; margin: 0; }
+  .svc h3 { margin-top: 18px; }
+  .gallery { display: grid; grid-auto-flow: dense; grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(180px, 16vw, 260px); gap: 16px; }
+  .gallery figure { margin: 0; border: 2px solid var(--tinta); border-radius: 18px; overflow: hidden; }
+  .gallery .tall { grid-row: span 2; } .gallery .wide { grid-column: span 2; }
+  @media (max-width: 800px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery .wide { grid-column: span 2; } }
+  .gallery img { transition: transform .5s; } .gallery figure:hover img { transform: scale(1.04); }
+  .credit { font-size: 14px; color: #5d7568; margin-top: 18px; }
+  .mobile-photo { border: 2px solid var(--menta); border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3.4; box-shadow: 10px 10px 0 var(--menta); }
+  .split-band { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 2px solid var(--tinta); }
+  .split-band figure { margin: 0; height: clamp(280px, 30vw, 460px); }
+  .split-band figure + figure { border-left: 2px solid var(--tinta); }
+  @media (max-width: 700px) { .split-band { grid-template-columns: 1fr; } .split-band figure + figure { border-left: 0; border-top: 2px solid var(--tinta); } }
+</style>
+</head>
+<body>
+
+<div class="demo" data-i18n="demo"><b>Vista previa</b> · Propuesta de diseño hecha por MADEVHUB para Ray's Barber Shop. No está publicada.</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Ray's Barber Shop">
+      <span class="pole" aria-hidden="true"></span>
+      <span><b>RAY'S</b><small>BARBER SHOP · HIALEAH</small></span>
+    </a>
+    <nav class="links">
+      <a href="#servicios" data-i18n="n1">Servicios</a>
+      <a href="#domicilio" data-i18n="n2">A domicilio</a>
+      <a href="#trabajo" data-i18n="n5">Trabajos</a>
+      <a href="#resenas" data-i18n="n3">Reseñas</a>
+      <a href="#visitanos" data-i18n="n4">Visítanos</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn red small" data-book href="#" data-i18n="book">Reservar</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <a class="rating" data-reviews href="#">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span data-i18n="rating">4.9 · 457 reseñas en Booksy</span>
+      </a>
+      <h1 data-i18n="h1">Corte <span>fresco</span><em>en Hialeah</em></h1>
+      <p data-i18n="heroP">Cortes, barba y afeitado con navaja hechos con calma y al detalle. Reserva tu silla en un minuto o te vamos a ver a domicilio.</p>
+      <div class="ctas">
+        <a class="btn red" data-book href="#">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span data-i18n="bookNow">Reservar mi cita</span></a>
+        <a class="btn light" href="#servicios" data-i18n="seePrices">Ver precios</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-photo"><img class="ph" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=80" alt="Cliente sentado en la silla del barbero" fetchpriority="high" /></div>
+      <span class="chip" data-i18n="chip">$35 · antes $50</span>
+  <div class="board" aria-label="Lista de precios">
+      <h2 data-i18n="bTitle">SERVICIOS</h2>
+      <div class="sub" data-i18n="bSub">precio especial · reserva en línea</div>
+      <ul>
+        <li><span data-i18n="s1">CORTE DE CABALLERO</span><span class="price"><s>$50</s>$35</span><span class="min">40 min</span></li>
+        <li><span data-i18n="s2">BARBA</span><span class="price"><s>$50</s>$35</span><span class="min">30 min</span></li>
+        <li><span data-i18n="s3">AFEITADO DE CABEZA</span><span class="price"><s>$50</s>$35</span><span class="min">30 min</span></li>
+        <li><span data-i18n="s4">ANÁLISIS DE CABELLO</span><span class="price free" data-i18n="free">GRATIS</span><span class="min">5 min</span></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe" aria-hidden="true">
+  <div class="track" id="track"></div>
+</div>
+
+<section class="block" id="servicios">
+  <div class="wrap">
+    <h2 data-i18n="svcH">Lo que hacemos</h2>
+    <p class="lead" data-i18n="svcP">Tres servicios, bien hechos. Precio especial de $35 cuando reservas por Booksy.</p>
+    <div class="services">
+      <article class="svc">
+        <div class="shot"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=900&q=80" alt="Barbero cortando el cabello con tijera" />
+  <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0f241c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+        </div>
+        <div class="body">
+        <h3 data-i18n="c1h">Corte de caballero</h3>
+        <p data-i18n="c1p">Fade, clásico o como lo traigas en la foto. Te preguntamos antes de cortar y terminamos con el perfilado.</p>
+        <div class="row"><span class="amt">$35<s>$50</s></span><span class="time">40 min</span></div>
+        </div>
+      </article>
+      <article class="svc">
+        <div class="shot"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1599011176306-4a96f1516d4d?auto=format&fit=crop&w=900&q=80" alt="Barbero arreglando una barba" />
+  <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0f241c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v6a5 5 0 0 0 10 0V3"/><path d="M5 13c0 4.4 3.1 8 7 8s7-3.6 7-8"/><path d="M10 15h4"/></svg></div>
+        </div>
+        <div class="body">
+        <h3 data-i18n="c2h">Barba</h3>
+        <p data-i18n="c2p">Perfilado, rebaje y líneas limpias para que la barba se vea cuidada, no solo corta.</p>
+        <div class="row"><span class="amt">$35<s>$50</s></span><span class="time">30 min</span></div>
+        </div>
+      </article>
+      <article class="svc">
+        <div class="shot"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80" alt="Barbero usando navaja" />
+  <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0f241c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15 15 3l3 3L6 18H3z"/><path d="M13 5l3 3"/><path d="M14 21h7"/></svg></div>
+        </div>
+        <div class="body">
+        <h3 data-i18n="c3h">Afeitado de cabeza</h3>
+        <p data-i18n="c3p">Afeitado completo para que la cabeza quede pareja y suave, sin irritación.</p>
+        <div class="row"><span class="amt">$35<s>$50</s></span><span class="time">30 min</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="note">
+      <span class="tag" data-i18n="tag1">Análisis de cabello gratis</span>
+      <span class="tag" data-i18n="tag2">Paquetes disponibles</span>
+      <a class="btn red small" data-book href="#" data-i18n="bookNow">Reservar mi cita</a>
+    </div>
+  </div>
+</section>
+
+<div class="split-band" aria-hidden="true">
+  <figure><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=80" alt="" /></figure>
+  <figure><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=80" alt="" /></figure>
+</div>
+
+<section class="block" id="trabajo">
+  <div class="wrap">
+    <h2 data-i18n="gH">El detalle se nota</h2>
+    <p class="lead" data-i18n="gP">Líneas limpias, fades parejos y barbas bien definidas. Así sale cada cliente de la silla.</p>
+    <div class="gallery">
+      <figure class="tall"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&w=800&q=80" alt="Barbero haciendo un corte" /></figure>
+      <figure class="wide"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80" alt="Barbero secando y peinando el cabello" /></figure>
+      <figure><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=700&q=80" alt="Arreglo de barba con tijera" /></figure>
+      <figure><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=800&q=80" alt="Corte de cabello" /></figure>
+      <figure class="wide"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1640301133857-c4bc5789c1bb?auto=format&fit=crop&w=1200&q=80" alt="Cliente en la silla del barbero" /></figure>
+    </div>
+    <p class="credit" data-i18n="credit">Fotos de referencia (Unsplash). En la versión final van las fotos reales de Ray's.</p>
+  </div>
+</section>
+
+<section class="block mobile" id="domicilio">
+  <div class="wrap">
+    <div>
+      <h2 data-i18n="mH">Te cortamos donde estés</h2>
+      <p class="lead" data-i18n="mP">¿No puedes venir? Ray's también hace servicio a domicilio. Ideal para la casa, la oficina o un evento.</p>
+      <ul>
+        <li data-i18n="m1">Para quien no tiene tiempo de salir</li>
+        <li data-i18n="m2">Para personas mayores o con movilidad limitada</li>
+        <li data-i18n="m3">Para bodas, quinceañeras y grupos</li>
+      </ul>
+      <a class="btn red" data-book href="#" data-i18n="mBtn">Pedir servicio a domicilio</a>
+    </div>
+    <div class="mobile-photo"><img class="ph" loading="lazy" src="https://images.unsplash.com/photo-1648221122323-572c13a31663?auto=format&fit=crop&w=1200&q=80" alt="Barbero arreglando la barba de un cliente" /></div>
+  </div>
+</section>
+
+<section class="block rep" id="resenas">
+  <div class="wrap">
+    <div>
+      <p class="score">4.9</p>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p style="font-weight:700;font-size:clamp(20px,1.5vw,26px);margin:0" data-i18n="repN">457 reseñas en Booksy</p>
+    </div>
+    <div>
+      <h2 data-i18n="repH">Los clientes vuelven</h2>
+      <p class="lead" style="margin-bottom:30px" data-i18n="repP">446 de 457 clientes le dieron cinco estrellas. Lee lo que dicen antes de reservar.</p>
+      <div class="bars" aria-label="Calificaciones">
+        <div class="bar"><span>5 ★</span><span class="t"><i style="width:97.6%"></i></span><span>446</span></div>
+        <div class="bar"><span>4 ★</span><span class="t"><i style="width:1.1%"></i></span><span>5</span></div>
+        <div class="bar"><span>3 ★</span><span class="t"><i style="width:.5%"></i></span><span>2</span></div>
+        <div class="bar"><span>2 ★</span><span class="t"><i style="width:0"></i></span><span>0</span></div>
+        <div class="bar"><span>1 ★</span><span class="t"><i style="width:.9%"></i></span><span>4</span></div>
+      </div>
+      <a class="btn light" data-reviews href="#" data-i18n="repBtn">Leer las reseñas en Booksy</a>
+    </div>
+  </div>
+</section>
+
+<section class="block visit" id="visitanos">
+  <div class="wrap">
+    <h2 data-i18n="vH">Visítanos</h2>
+    <p class="lead" data-i18n="vP">Estamos en Hialeah. Reserva antes de venir para no esperar.</p>
+    <div class="grid">
+      <div class="info">
+        <dl>
+          <div><dt data-i18n="dAddr">Dirección</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=842+SE+8th+St+Hialeah+FL+33010" target="_blank" rel="noopener">842 SE 8th Street<br />Hialeah, FL 33010</a></dd></div>
+          <div><dt data-i18n="dHours">Horario</dt><dd data-i18n="hours">Mira el horario de cada día en Booksy.</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/ray.sbarbershop/" target="_blank" rel="noopener">@ray.sbarbershop</a></dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="btn red" data-book href="#" data-i18n="bookNow">Reservar mi cita</a>
+          <a class="btn light" href="https://www.google.com/maps/dir/?api=1&destination=842+SE+8th+St+Hialeah+FL+33010" target="_blank" rel="noopener" data-i18n="directions">Cómo llegar</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=842%20SE%208th%20St%2C%20Hialeah%2C%20FL%2033010&z=15&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <h2 data-i18n="endH">Tu próximo corte empieza aquí</h2>
+    <p data-i18n="endP">Escoge el servicio y la hora que te quede mejor. Te llega un recordatorio antes de la cita.</p>
+    <a class="btn light" data-book href="#" data-i18n="bookNow">Reservar mi cita</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© Ray's Barber Shop LLC · Hialeah, FL</span><span data-i18n="foot">Sitio de muestra diseñado por MADEVHUB</span></div></footer>
+
+<div class="sticky"><a class="btn red" data-book href="#" data-i18n="bookNow">Reservar mi cita</a></div>
+
+<script>
+  const BOOKSY = 'https://booksy.com/en-us/1126758_rays-barber-shop-llc_barber-shop_15886_hialeah';
+  document.querySelectorAll('[data-book]').forEach((a) => { a.href = BOOKSY; a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelectorAll('[data-reviews]').forEach((a) => { a.href = BOOKSY + '#reviews'; a.target = '_blank'; a.rel = 'noopener'; });
+
+  const EN = {
+    demo: '<b>Preview</b> · Design proposal made by MADEVHUB for Ray\'s Barber Shop. Not published.',
+    n1: 'Services', n2: 'Mobile service', n3: 'Reviews', n4: 'Visit us', book: 'Book',
+    rating: '4.9 · 457 reviews on Booksy',
+    h1: 'Fresh <span>cuts</span><em>in Hialeah</em>',
+    heroP: 'Haircuts, beard work and razor shaves done carefully and with detail. Book your chair in a minute, or we\'ll come to you.',
+    bookNow: 'Book my appointment', seePrices: 'See prices',
+    bTitle: 'SERVICES', bSub: 'special price · book online',
+    s1: 'MEN\'S HAIRCUT', s2: 'BEARD SHAPING', s3: 'HEAD SHAVE', s4: 'HAIR ANALYSIS', free: 'FREE',
+    svcH: 'What we do', svcP: 'Three services, done right. Special $35 price when you book on Booksy.',
+    c1h: 'Men\'s haircut', c1p: 'Fade, classic, or whatever you bring in the photo. We ask before we cut and finish with a clean line-up.',
+    c2h: 'Beard shaping', c2p: 'Shaping, trimming and clean lines so your beard looks groomed, not just short.',
+    c3h: 'Head shave', c3p: 'A full shave so your head is even and smooth, without irritation.',
+    tag1: 'Free hair analysis', tag2: 'Packages available',
+    mH: 'We cut wherever you are', mP: 'Can\'t come in? Ray\'s also offers mobile service. Great for your home, office or an event.',
+    m1: 'For people who can\'t get away', m2: 'For seniors or anyone with limited mobility', m3: 'For weddings, quinceañeras and groups',
+    mBtn: 'Request mobile service',
+    repN: '457 reviews on Booksy', repH: 'Clients come back', repP: '446 of 457 clients gave five stars. Read what they say before you book.',
+    repBtn: 'Read the reviews on Booksy',
+    vH: 'Visit us', vP: 'We\'re in Hialeah. Book before you come so you don\'t wait.',
+    dAddr: 'Address', dHours: 'Hours', hours: 'See each day\'s hours on Booksy.', directions: 'Get directions',
+    endH: 'Your next cut starts here', endP: 'Pick the service and time that work for you. You\'ll get a reminder before your appointment.',
+    foot: 'Sample site designed by MADEVHUB',
+    chip: '$35 · was $50', n5: 'Our work',
+    gH: 'The details show', gP: 'Clean lines, smooth fades and sharp beards. That\'s how every client leaves the chair.',
+    credit: 'Reference photos (Unsplash). The final version will use Ray\'s real photos.',
+  };
+  const STRIPE = {
+    es: ['Corte · $35', 'Barba · $35', 'Afeitado · $35', 'Servicio a domicilio', '4.9 ★ en Booksy', 'Hialeah, FL'],
+    en: ['Haircut · $35', 'Beard · $35', 'Head shave · $35', 'Mobile service', '4.9 ★ on Booksy', 'Hialeah, FL'],
+  };
+
+  const nodes = [...document.querySelectorAll('[data-i18n]')];
+  const ES = {};
+  nodes.forEach((n) => { ES[n.dataset.i18n] ??= n.innerHTML; });
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    const dict = lang === 'en' ? EN : ES;
+    nodes.forEach((n) => { const v = dict[n.dataset.i18n]; if (v != null) n.innerHTML = v; });
+    document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    const items = STRIPE[lang];
+    document.getElementById('track').innerHTML = [...items, ...items, ...items, ...items].map((t) => `<span>${t}</span>`).join('');
+    try { localStorage.setItem('rays-lang', lang); } catch {}
+  }
+  document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  let start = new URLSearchParams(location.search).get('lang');
+  if (!start) { try { start = localStorage.getItem('rays-lang'); } catch {} }
+  setLang(start === 'en' ? 'en' : 'es');
+</script>
+</body>
+</html>
