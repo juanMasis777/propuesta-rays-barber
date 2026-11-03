@@ -66,7 +66,7 @@
   @media (max-width: 960px) { .hero .wrap { grid-template-columns: 1fr; min-height: 0; } }
   .rating { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--tinta); border-radius: 999px; padding: 7px 16px 7px 12px; font-weight: 700; font-size: 15px; text-decoration: none; margin-bottom: 26px; }
   .rating .stars { color: var(--rojo); letter-spacing: 1px; }
-  .hero h1 { font: 400 clamp(56px, 7.4vw, 132px)/.95 var(--serif); margin: 0 0 26px; letter-spacing: -.015em; color: var(--tinta); }
+  .hero h1 { font: 400 clamp(50px, 6vw, 108px)/1 var(--serif); margin: 0 0 26px; letter-spacing: -.015em; color: var(--tinta); }
   .hero h1 span { font-style: italic; color: var(--rojo); }
   .hero h1 em { display: block; font: 700 clamp(15px, 1.25vw, 20px)/1 var(--sans); letter-spacing: .32em; text-transform: uppercase; margin-top: 22px; color: var(--pino); }
   .hero h1 em::before { content: ""; display: inline-block; width: 44px; height: 2px; background: var(--rojo); vertical-align: middle; margin-right: 14px; }
@@ -238,7 +238,10 @@
   .info dt { color: var(--gris); }
   .map { border-color: var(--line); box-shadow: 6px 6px 0 var(--sombra); background: var(--card); }
   .end { border-top-color: var(--line); }
-  .end .btn.light { box-shadow: 5px 5px 0 var(--sombra); }
+  .end { background: radial-gradient(800px 420px at 50% 0%, rgba(169,220,197,.12), transparent 70%), var(--pino); color: var(--crema); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+  .end h2 { color: var(--crema); }
+  .end p { color: #cfe0d7; }
+  .end .btn.red { box-shadow: 5px 5px 0 var(--sombra); font-size: 19px; padding: 18px 32px; }
 </style>
 </head>
 <body>
@@ -274,7 +277,7 @@
         <span class="stars" aria-hidden="true">★★★★★</span>
         <span data-i18n="rating">4.9 · 457 reseñas en Booksy</span>
       </a>
-      <h1 data-i18n="h1">Corte <span>fresco</span><br>en Hialeah.<em>Ray's Barber Shop</em></h1>
+      <h1 data-i18n="h1">Tu estilo,<br><span>en buenas manos.</span><em>Ray's Barber Shop · Hialeah</em></h1>
       <p data-i18n="heroP">Cortes, barba y afeitado con navaja hechos con calma y al detalle. Reserva tu silla en un minuto o te vamos a ver a domicilio.</p>
       <div class="ctas">
         <a class="btn red" data-book href="#">
@@ -434,7 +437,7 @@
   <div class="wrap">
     <h2 data-i18n="endH">Tu próximo corte empieza aquí</h2>
     <p data-i18n="endP">Escoge el servicio y la hora que te quede mejor. Te llega un recordatorio antes de la cita.</p>
-    <a class="btn light" data-book href="#" data-i18n="bookNow">Reservar mi cita</a>
+    <a class="btn red" data-book href="#" data-i18n="bookNow">Reservar mi cita</a>
   </div>
 </section>
 </main>
@@ -452,7 +455,7 @@
     demo: '<b>Preview</b> · Design proposal made by MADEVHUB for Ray\'s Barber Shop. Not published.',
     n1: 'Services', n2: 'Mobile service', n3: 'Reviews', n4: 'Visit us', book: 'Book',
     rating: '4.9 · 457 reviews on Booksy',
-    h1: 'Fresh <span>cuts</span><br>in Hialeah.<em>Ray\'s Barber Shop</em>',
+    h1: 'Your style,<br><span>in good hands.</span><em>Ray\'s Barber Shop · Hialeah</em>',
     heroP: 'Haircuts, beard work and razor shaves done carefully and with detail. Book your chair in a minute, or we\'ll come to you.',
     bookNow: 'Book my appointment', seePrices: 'See prices',
     bTitle: 'SERVICES', bSub: 'special price · book online',
