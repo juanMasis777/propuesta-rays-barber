@@ -107,7 +107,7 @@
   .svc h3 { font: 400 clamp(28px, 2.2vw, 36px)/1.05 var(--serif); margin: 0 0 10px; }
   .svc p { margin: 0 0 24px; color: #3a5447; flex: 1; }
   .svc .row { display: flex; align-items: baseline; justify-content: space-between; border-top: 2px dashed #b9cbbf; padding-top: 18px; }
-  .svc .amt { font: 900 48px/1 var(--sans); font-variation-settings: "wdth" 70; }
+  .svc .amt { font: 400 46px/1 var(--serif); }
   .svc .amt s { font-size: 22px; color: #8aa093; font-weight: 700; margin-left: 6px; }
   .svc .time { font-weight: 700; color: #3a5447; }
   .note { margin-top: 30px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-weight: 600; }
@@ -127,7 +127,7 @@
   /* Reputación */
   .rep .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
   @media (max-width: 900px) { .rep .wrap { grid-template-columns: 1fr; } }
-  .score { font: 900 clamp(140px, 16vw, 260px)/.8 var(--sans); font-variation-settings: "wdth" 62; color: var(--rojo); margin: 0; }
+  .score { font: 400 clamp(130px, 14vw, 230px)/.85 var(--serif); color: var(--rojo); margin: 0; }
   .score + .stars { font-size: clamp(30px, 2.6vw, 42px); color: var(--rojo); letter-spacing: 4px; margin: 14px 0 6px; }
   .bars { display: grid; gap: 12px; margin: 0 0 32px; }
   .bar { display: grid; grid-template-columns: 70px 1fr 54px; gap: 14px; align-items: center; font-weight: 700; }
@@ -194,6 +194,51 @@
   .split-band figure { margin: 0; height: clamp(280px, 30vw, 460px); }
   .split-band figure + figure { border-left: 2px solid var(--tinta); }
   @media (max-width: 700px) { .split-band { grid-template-columns: 1fr; } .split-band figure + figure { border-left: 0; border-top: 2px solid var(--tinta); } }
+
+  /* ===== Tema oscuro ===== */
+  :root { --bg: #0d1613; --bg-2: #121e19; --card: #16241e; --line: #2c4339; --crema: #f3eee4; --gris: #a9b9b0; --sombra: #050908; }
+  html { color-scheme: dark; }
+  body { background: var(--bg); color: var(--crema); }
+  .demo, footer { background: #070c0a; }
+  .nav { background: rgba(13,22,19,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .logo small { color: var(--gris); }
+  .pole { border-color: var(--crema); }
+  .lang { border-color: var(--line); }
+  .lang button { color: var(--crema); }
+  .lang button[aria-pressed="true"] { background: var(--crema); color: var(--bg); }
+  .btn { border-color: var(--sombra); }
+  .btn.red, .btn.small, .chip { box-shadow: 4px 4px 0 var(--sombra); }
+  .btn.light { background: var(--crema); color: var(--bg); }
+  .hero { background: radial-gradient(900px 600px at 85% 30%, rgba(169,220,197,.10), transparent 70%), var(--bg); border-bottom-color: var(--line); }
+  .hero::before { opacity: .05; background: conic-gradient(var(--crema) 25%, transparent 0 50%, var(--crema) 0 75%, transparent 0) 0 0 / 46px 46px; }
+  .rating { background: var(--card); border-color: var(--line); color: var(--crema); }
+  .hero h1 { color: var(--crema); }
+  .hero h1 em { color: var(--menta); }
+  .hero p { color: #d3dcd6; }
+  .hero-photo { border-color: var(--line); box-shadow: 10px 10px 0 var(--sombra); }
+  .board { box-shadow: 10px 10px 0 var(--sombra); }
+  .chip { border-color: var(--sombra); }
+  .stripe { border-bottom-color: var(--line); }
+  .stripe span { background: var(--bg); }
+  .lead { color: var(--gris); }
+  .svc { background: var(--card); border-color: var(--line); box-shadow: 6px 6px 0 var(--sombra); }
+  .svc .shot { border-bottom-color: var(--line); }
+  .svc .ico { border-color: var(--bg); }
+  .svc p, .svc .time { color: var(--gris); }
+  .svc .row { border-top-color: var(--line); }
+  .svc .amt s { color: #7d8f86; }
+  .note .tag { background: var(--card); border-color: var(--line); }
+  .split-band, .split-band figure + figure { border-color: var(--line); }
+  .gallery figure { border-color: var(--line); }
+  .credit { color: #7d8f86; }
+  .mobile { background: var(--bg-2); border-color: var(--line); }
+  .bar .t { background: var(--card); border-color: var(--line); }
+  .visit { background: var(--bg-2); border-top-color: var(--line); }
+  .info { background: var(--card); border-color: var(--line); box-shadow: 6px 6px 0 var(--sombra); }
+  .info dt { color: var(--gris); }
+  .map { border-color: var(--line); box-shadow: 6px 6px 0 var(--sombra); background: var(--card); }
+  .end { border-top-color: var(--line); }
+  .end .btn.light { box-shadow: 5px 5px 0 var(--sombra); }
 </style>
 </head>
 <body>
