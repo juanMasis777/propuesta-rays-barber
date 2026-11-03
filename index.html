@@ -171,7 +171,12 @@
   .hero-media .board h2 { font-size: 18px; } .hero-media .board .sub { margin-bottom: 10px; font-size: 12px; }
   .hero-media .board li { padding: 8px 0; font-size: 15px; } .hero-media .board .min { font-size: 11px; }
   .chip { position: absolute; top: 24px; right: -14px; background: var(--rojo); color: #fff; border: 2px solid var(--tinta); border-radius: 999px; padding: 10px 18px; font-weight: 800; box-shadow: 4px 4px 0 var(--tinta); transform: rotate(4deg); }
-  @media (max-width: 960px) { .hero-media { min-height: 520px; } .hero-photo { inset: 0 0 90px 0; } .chip { right: 10px; } }
+  @media (max-width: 960px) {
+    .hero-media { min-height: 0; }
+    .hero-photo { position: relative; inset: auto; aspect-ratio: 4 / 3.6; }
+    .hero-media .board { position: relative; left: auto; bottom: auto; width: calc(100% - 28px); margin: -46px auto 0; }
+    .chip { right: 10px; top: 16px; }
+  }
   .svc { padding: 0; overflow: hidden; }
   .svc .shot { height: 230px; border-bottom: 2px solid var(--tinta); position: relative; }
   .svc .body { padding: 26px 30px 30px; display: flex; flex-direction: column; flex: 1; }
@@ -234,7 +239,7 @@
     </div>
 
     <div class="hero-media">
-      <div class="hero-photo"><img class="ph" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=80" alt="Cliente sentado en la silla del barbero" fetchpriority="high" /></div>
+      <div class="hero-photo"><img class="ph" style="object-position: center 35%" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=80" alt="Cliente sentado en la silla del barbero" fetchpriority="high" /></div>
       <span class="chip" data-i18n="chip">$35 · antes $50</span>
   <div class="board" aria-label="Lista de precios">
       <h2 data-i18n="bTitle">SERVICIOS</h2>
